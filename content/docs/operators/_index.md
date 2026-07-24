@@ -10,8 +10,8 @@ Operator docs cover two distinct privilege levels. You may hold one or both.
 - **Chanop** — has channel ops (`+o`); kicks, bans, and modes, plus the ability
   to look up user records and find a botmaster.
 - **Botmaster** — has bot master/owner flags (`+n`/`+m`); creates and maintains
-  the bot's userfile records. This is the role that satisfies the channel's
-  anti-troll join gate.
+  the bot's userfile records, including adding new members so their feature
+  prefs (like a saved weather default) work.
 
 Both roles need partyline access, so start with **[Joining the partyline]({{< relref "/docs/operators/partyline.md" >}})**.
 

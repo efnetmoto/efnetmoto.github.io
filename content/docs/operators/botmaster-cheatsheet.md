@@ -6,9 +6,9 @@ weight: 30
 # Botmaster cheat sheet
 
 For **botmasters** (`+n`/`+m`). Your job is **user CRUD** — creating, finding,
-modifying, and removing the bot's userfile records. This is the role that
-satisfies the channel's anti-troll join gate (see
-[Adding a non-privileged member](#adding-a-non-privileged-member) below).
+modifying, and removing the bot's userfile records, including adding new
+members so their feature prefs (like a [saved weather default]({{< relref "/docs/user/weather.md" >}}#getting-registered))
+stick (see [Adding a non-privileged member](#adding-a-non-privileged-member)).
 
 You have partyline access, so **partyline (`.command`) forms lead** here. If
 you're not on yet, see [Joining the partyline]({{< relref "/docs/operators/partyline.md" >}}).
@@ -122,14 +122,12 @@ Examples:
 
 ## Adding a non-privileged member
 
-This is the **anti-troll join-gate** use case: create a record that grants
-**no** privileges — just enough to be "registered" so feature prefs (like the
-[weather default]({{< relref "/docs/user/weather.md" >}}#getting-registered)) work
-and the join gate can see the member as a known, non-privileged account.
-
-On this fleet `default-flags` is empty, so a freshly `.+user`'d member is
-**non-privileged by default** — no `+o`, no `+m`, no `+n`, no partyline. You
-don't have to do anything special; just **don't** add flags.
+Most members just need a record so their feature prefs (like a
+[weather default]({{< relref "/docs/user/weather.md" >}}#getting-registered))
+work — no flags, no special privileges. On this fleet `default-flags` is
+empty, so a freshly `.+user`'d member is **non-privileged by default**: no
+`+o`, no `+m`, no `+n`, no partyline. You don't have to do anything special;
+just **don't** add flags.
 
 Verify with `.whois` — confirm the flags line is empty (no `+m`/`+o`/`+n`):
 
@@ -175,8 +173,6 @@ Changes to the userfile are saved on a timer, but you can force it:
 
 This cheat sheet covers **userfile CRUD only**. It does **not** cover:
 
-- Botnet linking / partyline plumbing, the anti-troll join-gate's soak/RBL/
-  escalation mechanics — those are **partyline-only** by design and live outside
-  public docs.
+- Botnet linking / partyline plumbing — that's a separate concern.
 - Fleet management (Ansible/Compose, bot deployment) — a separate concern.
 - Ban maintenance — see [ban maintenance]({{< relref "/docs/operators/ban-maintenance.md" >}}).
