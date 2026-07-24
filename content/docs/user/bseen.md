@@ -6,18 +6,22 @@ weight: 30
 # Seen tracking (`!seen`, `!lastspoke`)
 
 Decisis keeps a database of when nicks were last seen in the channel and
-answers queries about it. These commands run in channel — type them where
-everyone can see them.
+answers queries about it. These commands run in channel, where everyone can
+see them. Most also work via private message — see the table.
 
 ## Commands
 
-| Command | What it does |
-| --- | --- |
-| `!seen <query>` | When `<query>` was last seen in channel. Supports nick, mask, and host queries (below). |
-| `!seennick <nick>` | Look up an **exact** nick (skips the smart/fuzzy matching `!seen` does). |
-| `!seenstats` | Status of the seen database (counts, oldest/newest). |
-| `!chanstats <chan>` | Usage statistics for a channel in the seen database. |
-| `!lastspoke <nick>` | When `<nick>` last spoke in the channel. **See the caveat below.** |
+Most commands work two ways: in channel with the `!` prefix, or via
+`/msg Decisis` **without** the `!` (since you're already addressing the bot
+in a private message). `!lastspoke` is the exception — it's channel-only.
+
+| In channel | Via `/msg Decisis` | What it does |
+| --- | --- | --- |
+| `!seen <query>` | `seen <query>` | When `<query>` was last seen in channel. Supports nick, mask, and host queries (below). |
+| `!seennick <nick>` | `seennick <nick>` | Look up an **exact** nick (skips the smart/fuzzy matching `!seen` does). |
+| `!seenstats` | `seenstats` | Status of the seen database (counts, oldest/newest). |
+| `!chanstats <chan>` | `chanstats <chan>` | Usage statistics for a channel in the seen database. |
+| `!lastspoke <nick>` | — (channel only) | When `<nick>` last spoke in the channel. **See the caveat below.** |
 
 ## `!seen` query formats
 
