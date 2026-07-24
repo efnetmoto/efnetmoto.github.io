@@ -95,7 +95,7 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 > Getting registered is only required for *saving* a default and using the bare
 > `.w` / `.wz` form.
 
-## The bot doesn't make the weather
+## The bot is a pass-through, not the data source
 
 > [!IMPORTANT]
 > XeroKewl pulls data from upstream **providers** — WeatherAPI, AVWX (METAR),
