@@ -1,33 +1,26 @@
 ---
-title: "#motorcycles on EFNet"
 weight: 1
 ---
 
-# Welcome to \#motorcycles
+# EFNet #motorcycles
 
-We are an EFnet-based conversation channel devoted to the discussion and pursuit
-of motorcycling. Owning a bike is not a prerequisite to join, but it can be a
-side effect.
+EFNet #motorcycles has been around since 1998 — a conversation channel for people
+who ride, wrench, race, and otherwise care about motorcycles. Owning a bike
+isn't a prerequisite to join, but it can be a side effect.
 
-## The bots
+It's a small room — maybe 15–25 regulars, most of whom have been around for the
+better part of the channel's life — and the talk runs the full range: track days
+and tire temps, touring and moto-camping, vintage, dirt, Harleys, modern
+hypersports, wrenching, gear, and bike reviews. Given how long we've known each
+other, it's at least as much off-topic life stuff as it is bikes. It's the
+coffee stop on a ride, over text.
 
-A small fleet of [Eggdrop](https://www.eggheads.org/) bots keeps the channel
-usable. They're tools, not people — here's what each one does:
+The room is mostly US but genuinely global. Over the years enough of us have
+become actual friends that a few rides happen — an annual get-together at
+Deals Gap since '99 or '00, and GapWest, a semiannual NorCal meetup that
+started in 2022. Smaller regional meetups happen whenever folks feel like it;
+the Bay Area crowd gets together a lot, and the Southeast crew rides too.
 
-- **Pompone** — web search (`!g`) and the URL shortener (`go.efnetmoto.com`); also
-  generates the [channel stats](https://stats.efnetmoto.com).
-- **XeroKewl** — weather (`.w` / `.wz` / `.wzset`) and the quote file (`!quote`).
-- **Decisis** — "seen" tracking (`!seen`, `!lastspoke`, `!seenstats`).
-
-## Where to go next
-
-- **[Docs]({{< relref "/docs/_index.md" >}})** — how to use the bots. Start with the
-  [user guide]({{< relref "/docs/user/_index.md" >}}); if you're an operator, see the
-  [operator guide]({{< relref "/docs/operators/_index.md" >}}).
-- **[Resources]({{< relref "/resources/_index.md" >}})** — handy files hosted here (bill of sale, MSF
-  parking-lot exercises, gearing spreadsheet, suspension article, fault-finding
-  diagram).
-
-New to the channel and the bot says you're "not registered" when you try to
-save a weather default? That's expected — see
-[Getting registered]({{< relref "/docs/user/weather.md" >}}#getting-registered).
+A few bots help keep the channel usable — weather, web search, seen tracking,
+a quote file. They're tools, not the point; the [docs]({{< relref "/docs/_index.md" >}})
+explain how to use them.
