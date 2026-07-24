@@ -27,7 +27,7 @@ git submodule update --init --recursive
 ```
 content/
   _index.md            homepage
-  docs/user/           user-facing bot docs (search, weather, bseen, eggdrop cheat sheet)
+  docs/user/           user-facing bot docs (search, weather, quotes, bseen, eggdrop cheat sheet)
   docs/operators/      operator docs (partyline, chanop + botmaster cheat sheets, bans)
   resources/_index.md  flat file-library table (data-driven; see data/resources.toml)
 data/resources.toml    intended resource-file list (name, filename, description)
@@ -35,11 +35,14 @@ layouts/resources/     resources-section list layout (hides rows whose file isn'
 static/files/          recovered assets served at /files/<asset>
 ```
 
-## Asset recovery (Phase 1)
+## Resources
 
-`static/files/` currently holds only a placeholder. The five original documents
-need to be restored from the tarball backup of the old `static.efnetmoto.com`
-bucket, using **exactly** these filenames (the resources page matches on them):
+The five original documents are restored in `static/files/` (from the tarball
+backup of the old `static.efnetmoto.com` bucket) and served at `/files/<asset>`.
+The resources page (`content/resources/_index.md` + `data/resources.toml` +
+`layouts/resources/list.html`) renders a row only when the matching file exists
+in `static/files/`, so adding or removing a file automatically shows or hides
+its row — no broken links ship.
 
 | File                                   | Served at                |
 | -------------------------------------- | ------------------------ |
@@ -48,9 +51,6 @@ bucket, using **exactly** these filenames (the resources page matches on them):
 | `fault-finding-diagram.pdf`            | `/files/fault-finding-diagram.pdf` |
 | `gearing.xls`                          | `/files/gearing.xls` |
 | `suspension.pdf`                       | `/files/suspension.pdf` |
-
-Drop them into `static/files/`; the resources table fills in automatically.
-Rows whose file isn't present stay hidden — no broken links ship.
 
 ## Custom domain / CNAME
 

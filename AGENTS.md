@@ -55,7 +55,7 @@ data/resources.toml          intended resource-file list (name, filename, descri
 layouts/resources/list.html  resources list layout — hides rows whose file isn't in static/files/
 layouts/_partials/docs/footer.html  overrides the Book theme footer (GitHub icon + "Edit this page on GitHub")
 assets/icons/github.svg      the GitHub mark for the footer edit link
-static/files/                recovered assets served at /files/<asset> (currently only .gitkeep)
+static/files/                recovered assets served at /files/<asset> (5 files, restored)
 themes/hugo-book/            git submodule — DO NOT edit; override via project layouts/assets instead
 ```
 
@@ -122,14 +122,13 @@ them live), don't hedge with "can differ per channel."
 
 `layouts/resources/list.html` renders a row **only when the matching file exists
 in `static/files/`** (checked via `os.ReadDir`). This keeps the page free of
-broken links until assets are restored. The file list lives in
+broken links when a file is missing. The file list lives in
 `data/resources.toml`. To populate: drop the files into `static/files/` with
 the exact filenames in the data file; the table fills in on the next build.
 
-**Asset recovery (pending):** 5 files need to be restored from a tarball backup
-of the old `static.efnetmoto.com` bucket. Exact filenames: `Bill_of_Sale.doc`,
+The 5 resource files are restored: `Bill_of_Sale.doc`,
 `MSF_ParkingLotExercises.pdf`, `fault-finding-diagram.pdf`, `gearing.xls`,
-`suspension.pdf`. See README.md.
+`suspension.pdf`.
 
 ## Theme overrides
 
@@ -162,14 +161,14 @@ emits spurious warnings on the relref placeholder.
 
 ## What's done / not done
 
-- **Done:** repo scaffolded, CI pipeline, homepage, resources page,
-  all user docs, all operator docs, DNS cutover (apex + www), CNAME committed.
-- **Pending:** set custom domain in Pages settings + wait for cert (TLS for
-  `efnetmoto.com`); decommission GitLab Pages.
-- **Pending (Phase 5):** fleet PR wiring weather/quote/bseen help output to the
-  site URLs, including augmenting `weather.py`'s "not registered" messages to
-  link `#getting-registered`. Xerokewl + Decisis redeploy. Pompone untouched.
-- **Pending:** asset recovery into `static/files/`.
+- **Done:** repo scaffolded, CI pipeline, homepage, resources page (5
+  assets recovered + live), all user docs (search, weather, quotes, bseen,
+  eggdrop cheat sheet), all operator docs, DNS cutover (apex + www),
+  CNAME committed, fleet PR open (#72).
+- **Pending:** apex TLS cert finishing provisioning + HTTPS enforcement;
+  decommission GitLab Pages.
+- **Pending (Phase 5):** merge fleet PR #72 + redeploy Xerokewl (weather +
+  quote) and Decisis (bseen). Pompone untouched.
 
 The full implementation plan lives in the Obsidian Research folder:
 `~/obsidian/01_Projects/EFNetMoto Website Modernization/Research/Implementation Plan.md`.
