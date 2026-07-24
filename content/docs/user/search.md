@@ -22,9 +22,7 @@ is a **pass-through, not the search engine**.
 > [!IMPORTANT]
 > The bot does **not** control Brave's results. If a result is wrong, outdated,
 > spammy, or just bizarre, that's what Brave returned — not a bot bug. There's
-> nothing to "fix" on the bot side. (Same idea as the
-> [weather bot]({{< relref "/docs/user/weather.md" >}}) — different upstream,
-> same principle: blame the source, not the messenger.)
+> nothing to "fix" on the bot side.
 
 ## Result format
 
