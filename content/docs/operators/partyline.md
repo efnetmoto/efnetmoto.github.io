@@ -12,10 +12,10 @@ way; **what you can run once you're on depends on your flags**.
 
 ## Why it exists
 
-Some commands manage the bot's internal state — the **userfile** (who's
+Some commands manage the bot's internal state — the **user records** (who's
 registered, their flags, their hostmasks) and the **ban list** — and have no
-channel equivalent. User CRUD (`.+user`, `.chattr`, `.+host`, …) and the
-ban-management commands (`.+ban`, `.bans`, `.stick`, …) are **partyline-only**.
+channel equivalent. Managing users (`.+user`, `.chattr`, `.+host`, …) and the
+ban commands (`.+ban`, `.bans`, `.stick`, …) are **partyline-only**.
 So is finding out who else is on (`whom`) and botnet info (`bots`).
 
 In-channel IRC (kicking, `/mode +b`, op/deop) still works for the quick stuff —
@@ -70,6 +70,6 @@ From here, go to your role's cheat sheet:
 - **Private** — only operators with records can see it; nothing you type on the
   partyline appears in `#motorcycles`.
 - **Persistent** — you stay connected across channel activity; the bot keeps
-  state (your session, the userfile, the ban list) live.
+  state (your session, the user records, the ban list) live.
 - **Stateful commands** — partyline commands change what the bot *remembers*
   (records, bans, flags), which is exactly why they're not in-channel.

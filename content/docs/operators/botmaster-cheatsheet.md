@@ -5,9 +5,10 @@ weight: 30
 
 # Botmaster cheat sheet
 
-For **botmasters** (`+n`/`+m`). Your job is **user CRUD** — creating, finding,
-modifying, and removing the bot's userfile records, including adding new
-members so their feature prefs (like a [saved weather default]({{< relref "/docs/user/weather.md" >}}#getting-registered))
+For **botmasters** (`+n`/`+m`). Your job is managing the bot's **user records** —
+adding, finding, changing, and removing the people the bot knows about. That
+includes adding new members so their feature prefs (like a
+[saved weather default]({{< relref "/docs/user/weather.md" >}}#getting-registered))
 stick (see [Adding a non-privileged member](#adding-a-non-privileged-member)).
 
 You have partyline access, so **partyline (`.command`) forms lead** here. If
@@ -18,7 +19,7 @@ you're not on yet, see [Joining the partyline]({{< relref "/docs/operators/party
 > botmaster-created — there is no self-registration path for members. If someone
 > needs a record, you create it.
 
-## Create — `.+user`
+## Adding a user
 
 ```
 .+user <handle> <hostmask>
@@ -67,7 +68,7 @@ Eggdrop matches on `nick!user@host` with wildcards. Typical safe choices:
 Prefer host/ident-based masks over nick-based ones — a nick can be taken by
 anyone.
 
-## Read — find and inspect records
+## Finding a user
 
 ```
 .whois <nick>          look up by current nick (shows handle, flags, hosts, last seen)
@@ -76,7 +77,7 @@ anyone.
 .userinfo <handle>     extra stored info for a handle
 ```
 
-## Update — flags and hostmasks
+## Changing flags and hostmasks
 
 ### Flags — `.chattr`
 
@@ -139,7 +140,7 @@ Verify with `.whois` — confirm the flags line is empty (no `+m`/`+o`/`+n`):
 
 Only add flags deliberately, when someone actually needs them.
 
-## Delete — `.-user`
+## Removing a user
 
 ```
 .-user <handle>
@@ -149,7 +150,7 @@ Removes the record and all its hostmasks/flags. Use with care.
 
 ## Save your work
 
-Changes to the userfile are saved on a timer, but you can force it:
+Changes to the user records are saved on a timer, but you can force it:
 
 ```
 .save
@@ -173,11 +174,11 @@ Changes to the userfile are saved on a timer, but you can force it:
 >   is temporary (VPN, travel) or while you're about to `.+host` it anyway.
 >
 > If `whois` finds **no record at all**, it's not a hostmask issue — create one
-> with `.+user` (see [Create](#create--user)).
+> with `.+user` (see [Adding a user](#adding-a-user)).
 
 ## Out of scope here
 
-This cheat sheet covers **userfile CRUD only**. It does **not** cover:
+This cheat sheet covers **user records only**. It does **not** cover:
 
 - Botnet linking / partyline plumbing — that's a separate concern.
 - Fleet management (Ansible/Compose, bot deployment) — a separate concern.
