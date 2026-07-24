@@ -6,8 +6,8 @@ weight: 30
 # Seen tracking (`!seen`, `!lastspoke`)
 
 Decisis keeps a database of when nicks were last seen in the channel and
-answers queries about it. These commands work **in channel** and **by private
-message** (`/msg Decisis <command>`).
+answers queries about it. These commands run in channel — type them where
+everyone can see them.
 
 ## Commands
 
@@ -63,14 +63,4 @@ or, if they've been quiet the whole time the bot's been in channel:
 
 ```
 <Decisis> alice hasn't uttered a word since I joined #motorcycles 3 hours ago.
-```
-
-## Help on the bot
-
-You can ask Decisis directly for help:
-
-```
-/msg Decisis help seen
-/msg Decisis help chanstats
-/msg Decisis help seenstats
 ```
