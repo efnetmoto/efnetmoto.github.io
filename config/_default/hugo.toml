@@ -1,0 +1,62 @@
+# Hugo configuration for the EFNet #motorcycles docs site.
+# CI overrides baseURL via --baseURL (see .github/workflows/hugo.yml) so each
+# deploy matches the actual GitHub Pages URL (efnetmoto.github.io now, the apex
+# custom domain once Phase 4 cutover lands). Keep this baseURL as the canonical
+# apex for local development.
+
+baseURL = "https://efnetmoto.com/"
+defaultContentLanguage = "en"
+title = "EFNet #motorcycles"
+theme = "hugo-book"
+
+enableGitInfo = true
+enableRobotsTXT = true
+disablePathToLower = true
+
+[languages.en]
+  languageCode = "en-us"
+  languageName = "English"
+
+# No blog: disable the taxonomy/section features Hugo turns on by default.
+disableKinds = ["taxonomy", "term", "rss"]
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 4
+
+[params]
+  BookTheme = "light"
+  # Left sidebar is built from content/docs/ (user + operators subsections).
+  BookSection = "docs"
+  BookRepo = "https://github.com/efnetmoto/efnetmoto.github.io"
+  # .Path resolves to /content/<section>/<file>.md — see themes/hugo-book/.../links/edit.html
+  BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main{{ .Path }}'
+  BookSearch = true
+  BookComments = false
+  # Warn (don't fail) on markdown links that don't resolve to a page/resource,
+  # so broken internal cross-links surface at build time.
+  BookPortableLinks = "warning"
+  BookDateFormat = "January 2, 2006"
+
+# Sidebar nav, above the docs tree.
+[[menu.before]]
+  name = "Home"
+  pageRef = "/"
+  weight = 1
+[[menu.before]]
+  name = "Resources"
+  pageRef = "/resources/"
+  weight = 2
+
+# Sidebar nav, below the docs tree (external links open in a new tab).
+[[menu.after]]
+  name = "Stats"
+  url = "https://stats.efnetmoto.com"
+  weight = 1
+[[menu.after]]
+  name = "GitHub"
+  url = "https://github.com/efnetmoto/efnetmoto.github.io"
+  weight = 2
