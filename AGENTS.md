@@ -37,9 +37,9 @@ from the auto-provisioned `legacy`/Jekyll to `workflow` — if Pages ever resets
 re-run: `gh api -X PUT repos/efnetmoto/efnetmoto.github.io/pages -f build_type=workflow`.
 
 The site is live at `https://efnetmoto.github.io/`. The apex `efnetmoto.com`
-canonical is **not yet wired** (Phase 4 — DNS cutover). `static/CNAME` is
-deliberately absent until then; adding it now would redirect the preview to the
-apex before DNS points there.
+is the canonical domain (`static/CNAME` is committed); `www.efnetmoto.com`
+redirects to it once the custom domain is set in Pages settings and the cert
+provisions.
 
 ## Repo layout
 
@@ -162,10 +162,10 @@ emits spurious warnings on the relref placeholder.
 
 ## What's done / not done
 
-- **Done (Phases 0-3):** repo scaffolded, CI pipeline, homepage, resources page,
-  all user docs, all operator docs.
-- **Pending (Phase 4):** DNS cutover to GitHub Pages (apex `efnetmoto.com`
-  canonical, www redirect), commit `static/CNAME`, decommission GitLab Pages.
+- **Done:** repo scaffolded, CI pipeline, homepage, resources page,
+  all user docs, all operator docs, DNS cutover (apex + www), CNAME committed.
+- **Pending:** set custom domain in Pages settings + wait for cert (TLS for
+  `efnetmoto.com`); decommission GitLab Pages.
 - **Pending (Phase 5):** fleet PR wiring weather/quote/bseen help output to the
   site URLs, including augmenting `weather.py`'s "not registered" messages to
   link `#getting-registered`. Xerokewl + Decisis redeploy. Pompone untouched.

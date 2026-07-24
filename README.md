@@ -52,13 +52,16 @@ bucket, using **exactly** these filenames (the resources page matches on them):
 Drop them into `static/files/`; the resources table fills in automatically.
 Rows whose file isn't present stay hidden — no broken links ship.
 
-## Custom domain / CNAME (Phase 4 — NOT done yet)
+## Custom domain / CNAME
 
-The apex `efnetmoto.com` canonical and the `www` → apex redirect are configured
-in **Phase 4** of the migration plan. To keep the `efnetmoto.github.io` preview
-live until then, `static/CNAME` is **not** committed yet — adding it would make
-GitHub Pages redirect the `*.github.io` URL to the apex before DNS points there.
+The apex `efnetmoto.com` is the canonical domain; `www.efnetmoto.com`
+redirects to it. `static/CNAME` (containing `efnetmoto.com`) is committed —
+Hugo copies it to the site root, where GitHub Pages reads it to know which
+apex to serve.
 
-To cut over: add `static/CNAME` containing `efnetmoto.com`, set the custom domain
-in Settings → Pages, and point DNS (apex A records + `www` CNAME to
-`efnetmoto.github.io`).
+DNS points the apex to the GitHub Pages A/AAAA records and `www` CNAMEs to
+`efnetmoto.github.io`. The custom domain is set in Settings → Pages (this
+provisions the TLS certificate and enables the `www` → apex redirect).
+
+While the apex cert is provisioning, the `efnetmoto.github.io` URL keeps
+serving the site at the same content.
