@@ -160,14 +160,20 @@ Changes to the userfile are saved on a timer, but you can force it:
 > [!NOTE]
 > If a member says the bot isn't recognizing them — `.wzset` claims they have no
 > default, or the bot ignores them — it's almost always a **hostmask mismatch**.
-> 1. `.whois <nick>` and check their hostmasks against their *current* host
->    (shown in the `.whois` output).
-> 2. If the new host isn't on the record, `.+host <handle> <new-hostmask>`.
-> 3. Tell the member to **ident** first (see the
->    [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}})) so
->    the bot matches them this session.
-> 4. If they have **no record at all** (`whois` finds nothing), create one with
->    `.+user` (see [Create](#create--user)).
+> First `.whois <nick>` and check their hostmasks against their *current* host
+> (shown in the `.whois` output). If the new host isn't on the record, you have
+> two ways to fix it — pick one, you don't need both:
+> - **`.+host <handle> <new-hostmask>`** (permanent) — the bot recognizes them
+>   by the new hostmask from now on. This is the fix for a hostmask that's
+>   changed for good.
+> - **Have the member ident** (this session only) — point them at the
+>   [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}).
+>   Identing re-matches them for the current session but doesn't save the
+>   hostmask, so they'd need to ident again next time. Use this when the change
+>   is temporary (VPN, travel) or while you're about to `.+host` it anyway.
+>
+> If `whois` finds **no record at all**, it's not a hostmask issue — create one
+> with `.+user` (see [Create](#create--user)).
 
 ## Out of scope here
 
