@@ -13,6 +13,8 @@ any special access to use them — just type the trigger in channel.
 - [Weather (`.w` / `.wz` / `.wzset`)]({{< relref "/docs/user/weather.md" >}}) —
   current conditions, save a default location, and how to get "registered" so
   your defaults stick.
+- [Quotes (`!quote`, `!addquote`)]({{< relref "/docs/user/quotes.md" >}}) — the
+  channel quote file: fetch, add, search, and delete quotes.
 - [Seen tracking (`!seen`, `!lastspoke`)]({{< relref "/docs/user/bseen.md" >}}) —
   when a nick was last seen and when they last spoke.
 - [Eggdrop cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}) —
