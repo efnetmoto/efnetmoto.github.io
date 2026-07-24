@@ -21,13 +21,13 @@ usable. They're tools, not people — here's what each one does:
 
 ## Where to go next
 
-- **[Docs](/docs/)** — how to use the bots. Start with the
-  [user guide](/docs/user/); if you're an operator, see the
-  [operator guide](/docs/operators/).
-- **[Resources](/resources/)** — handy files hosted here (bill of sale, MSF
+- **[Docs]({{< relref "/docs/_index.md" >}})** — how to use the bots. Start with the
+  [user guide]({{< relref "/docs/user/_index.md" >}}); if you're an operator, see the
+  [operator guide]({{< relref "/docs/operators/_index.md" >}}).
+- **[Resources]({{< relref "/resources/_index.md" >}})** — handy files hosted here (bill of sale, MSF
   parking-lot exercises, gearing spreadsheet, suspension article, fault-finding
   diagram).
 
 New to the channel and the bot says you're "not registered" when you try to
 save a weather default? That's expected — see
-[Getting registered](/docs/user/weather/#getting-registered).
+[Getting registered]({{< relref "/docs/user/weather.md" >}}#getting-registered).

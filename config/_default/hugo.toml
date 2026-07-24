@@ -14,8 +14,8 @@ enableRobotsTXT = true
 disablePathToLower = true
 
 [languages.en]
-  languageCode = "en-us"
-  languageName = "English"
+  locale = "en-us"
+  label = "English"
 
 # No blog: disable the taxonomy/section features Hugo turns on by default.
 disableKinds = ["taxonomy", "term", "rss"]
@@ -36,9 +36,10 @@ disableKinds = ["taxonomy", "term", "rss"]
   BookEditLink = '{{ .Site.Params.BookRepo }}/edit/main{{ .Path }}'
   BookSearch = true
   BookComments = false
-  # Warn (don't fail) on markdown links that don't resolve to a page/resource,
-  # so broken internal cross-links surface at build time.
-  BookPortableLinks = "warning"
+  # relref already enforces internal cross-links at build time (errors on a
+  # broken ref), so BookPortableLinks is off — it would otherwise emit spurious
+  # warnings for the relref placeholder inside markdown link destinations.
+  BookPortableLinks = false
   BookDateFormat = "January 2, 2006"
 
 # Sidebar nav, above the docs tree.

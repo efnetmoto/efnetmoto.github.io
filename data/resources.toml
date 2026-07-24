@@ -1,0 +1,34 @@
+# Intended resource files. The resources page (layouts/resources/list.html)
+# renders a row only when the matching file exists in static/files/, so missing
+# files stay hidden and no broken links ship. Restore these exact filenames
+# (see README.md) to populate the table.
+
+[[entries]]
+  name = "Bill of Sale"
+  filename = "Bill_of_Sale.doc"
+  description = "A generic Bill of Sale that can be used for any motorcycle purchase."
+  weight = 1
+
+[[entries]]
+  name = "MSF Parking Lot Exercises"
+  filename = "MSF_ParkingLotExercises.pdf"
+  description = "Handy parking lot exercises from the MSF."
+  weight = 2
+
+[[entries]]
+  name = "Fault Finding Diagram"
+  filename = "fault-finding-diagram.pdf"
+  description = "A flow chart to diagnose electrical and charging system issues on most any bike. Multi-meter and charged battery required."
+  weight = 3
+
+[[entries]]
+  name = "Gearing spreadsheet"
+  filename = "gearing.xls"
+  description = "A spreadsheet to easily experiment with gearing ratios."
+  weight = 4
+
+[[entries]]
+  name = "Suspension"
+  filename = "suspension.pdf"
+  description = "An article from Superbike magazine regarding suspension."
+  weight = 5

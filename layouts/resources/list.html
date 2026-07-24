@@ -1,0 +1,38 @@
+{{ define "main" }}
+<article class="markdown book-article">
+  {{- .Content -}}
+
+  {{/*
+    Render a row only when the file exists in static/files/. This keeps the page
+    free of broken links until Ted restores the assets from the tarball backup.
+    os.ReadDir lists the directory; .gitkeep is ignored because it isn't in
+    data/resources.toml.
+  */}}
+  {{- $present := slice -}}
+  {{- range os.ReadDir "static/files" -}}
+    {{- $present = $present | append .Name -}}
+  {{- end -}}
+
+  {{- $shown := 0 -}}
+  <table>
+    <thead>
+      <tr><th>Document</th><th>Description</th></tr>
+    </thead>
+    <tbody>
+    {{- range sort hugo.Data.resources.entries "weight" -}}
+      {{- if in $present .filename -}}
+        {{- $shown = add $shown 1 -}}
+        <tr>
+          <td><a href="/files/{{ .filename }}">{{ .name }}</a></td>
+          <td>{{ .description }}</td>
+        </tr>
+      {{- end -}}
+    {{- end -}}
+    </tbody>
+  </table>
+
+  {{- if eq $shown 0 -}}
+  <p><em>Documents will appear here once they're restored to <code>static/files/</code>.</em></p>
+  {{- end -}}
+</article>
+{{ end }}
