@@ -40,7 +40,7 @@ Each result is one line:
 
 ## Limits
 
-- **Up to 2 results** per query. (There's no setting to ask for more.)
+- **Up to 2 results** per query.
 - **Query length: 256 characters max.** Longer and you'll get
   `Query too long (max 256 chars).`
 - **Per-user cooldown: 5 seconds.** A channel-wide cooldown of 1 second also
@@ -48,12 +48,6 @@ Each result is one line:
 - **Cache: 1 hour** (up to ~1024 queries). A repeat query hits the cache and
   comes back instantly — and a cache hit does **not** cost you a rate-limit
   slot, so popular lookups stay free.
-
-## No `!g N` to expand a result
-
-Results aren't numbered, and there's **no** `!g 2` to "open the second result."
-Each line already includes the link; click it. The bot intentionally doesn't
-add a numeric index — it'd be noise next to an already-bolded title.
 
 ## Error messages
 
@@ -64,9 +58,3 @@ add a numeric index — it'd be noise next to an already-bolded title.
 | `Rate limited — try again shortly.` | You searched again within the cooldown. |
 | `No results found for: <query>` | Brave returned nothing for that query. |
 | `An unexpected error occurred. Please try again later.` | Transient failure (network/upstream). Retry shortly. |
-
-## There's no `!ghelp`
-
-`!g` is deliberately a one-trigger interface — there's no help command on the
-bot. This page *is* the help. (A botmaster can bust the result cache from the
-partyline with `.searchcache`, but that's an operator concern.)

@@ -63,29 +63,22 @@ Partyline form (if you have access):
 .ident <password> <nickname>
 ```
 
-Identing re-matches your *current* host to your record for this session. It
-doesn't permanently save the new hostmask — see below.
-
-## You can't add your own hostmask
-
-On this fleet the `addhost` MSG command is **disabled** (the fleet unbinds it),
-so there is **no** `/msg <bot> addhost …` — it won't work. To make a new
-hostmask **permanent**, you have to ask a botmaster to add it to your record
-(`.+host`). See the [botmaster cheat sheet]({{< relref "/docs/operators/botmaster-cheatsheet.md" >}}).
+Identing re-matches your *current* host to your record for this session. To
+make a new hostmask **permanent**, ask a botmaster to add it to your record
+(`.+host`) — see the [botmaster cheat sheet]({{< relref "/docs/operators/botmaster-cheatsheet.md" >}}).
 
 > [!IMPORTANT]
 > **If the bot isn't recognizing you** — e.g. `.wzset` says you have no default
 > even though you set one, or the bot treats you like a stranger — it's almost
 > always a **hostmask mismatch**. Ident now (above) to get recognized for this
-> session; if the new hostmask is permanent, ask a botmaster to add it.
+> session; then ask a botmaster to add the new hostmask if it's permanent.
 
 ## You need a record first
 
-The bot does **not** auto-add users from the channel — every record is created
-by hand by a botmaster. So if you've **never been added**, no amount of identing
-will help: there's no record to match you to. Ask an operator to get you added —
-see [Getting registered]({{< relref "/docs/user/weather.md" >}}#getting-registered)
-for the exact path.
+Saved defaults and idents are tied to a bot record, and records are created by
+a botmaster — see [Getting registered]({{< relref "/docs/user/weather.md" >}}#getting-registered)
+for the exact path. If you've never been added, identing alone won't create
+one — ask an operator to get you added.
 
 ## Quick reference
 
@@ -94,4 +87,3 @@ for the exact path.
 | Set password | `/msg <bot> pass <newpass>` | `.pass <newpass>` |
 | Ident (same nick) | `/msg <bot> ident <password>` | `.ident <password>` |
 | Ident (different nick) | `/msg <bot> ident <password> <nickname>` | `.ident <password> <nickname>` |
-| Add a hostmask | **not available** — ask a botmaster | `.+host` is a botmaster command (see operator docs) |
