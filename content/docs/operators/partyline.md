@@ -27,8 +27,6 @@ but anything the bot should *remember* lives on the partyline.
 You need a user record with at least the partyline flag to do anything useful
 (operators have `+o` or `+n`/`+m`, both of which grant partyline access).
 
-### DCC CHAT (the usual way)
-
 From your IRC client:
 
 ```
@@ -48,22 +46,6 @@ you> yourpassword
 You set your password with `pass` — see the
 [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}) (or a
 botmaster set it when creating your record).
-
-### Telnet (when DCC fails)
-
-If your client is behind a firewall and DCC won't work, telnet to the bot's
-listen port (**2020** on this fleet) and log in the same way:
-
-```
-telnet <bot-host> 2020   # the bot's listen port on this fleet
-Please enter your handle.
-> yourhandle
-Please enter your password.
-> yourpassword
-```
-
-Telnet is protected (`protect-telnet` is on), so you must ident with handle +
-password — random connections are dropped.
 
 ## Once you're on
 
