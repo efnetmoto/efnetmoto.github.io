@@ -123,12 +123,9 @@ them live), don't hedge with "can differ per channel."
 `layouts/resources/list.html` renders a row **only when the matching file exists
 in `static/files/`** (checked via `os.ReadDir`). This keeps the page free of
 broken links when a file is missing. The file list lives in
-`data/resources.toml`. To populate: drop the files into `static/files/` with
-the exact filenames in the data file; the table fills in on the next build.
-
-The 5 resource files are restored: `Bill_of_Sale.doc`,
-`MSF_ParkingLotExercises.pdf`, `fault-finding-diagram.pdf`, `gearing.xls`,
-`suspension.pdf`.
+`data/resources.toml` — that's the source of truth, not this file. To add a
+resource: drop the file in `static/files/` and add an entry to the data file
+with the exact filename; the table fills in on the next build.
 
 ## Theme overrides
 

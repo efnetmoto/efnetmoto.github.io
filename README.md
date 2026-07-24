@@ -30,27 +30,14 @@ content/
   docs/user/           user-facing bot docs (search, weather, quotes, bseen, eggdrop cheat sheet)
   docs/operators/      operator docs (partyline, chanop + botmaster cheat sheets, bans)
   resources/_index.md  flat file-library table (data-driven; see data/resources.toml)
-data/resources.toml    intended resource-file list (name, filename, description)
-layouts/resources/     resources-section list layout (hides rows whose file isn't in static/files/)
+data/resources.toml    resource-file list (name, filename, description) — the source of truth for the table
+layouts/resources/     resources-section list layout — renders a row only when the file exists in static/files/ (no broken links)
 static/files/          recovered assets served at /files/<asset>
 ```
 
-## Resources
-
-The five original documents are restored in `static/files/` (from the tarball
-backup of the old `static.efnetmoto.com` bucket) and served at `/files/<asset>`.
-The resources page (`content/resources/_index.md` + `data/resources.toml` +
-`layouts/resources/list.html`) renders a row only when the matching file exists
-in `static/files/`, so adding or removing a file automatically shows or hides
-its row — no broken links ship.
-
-| File                                   | Served at                |
-| -------------------------------------- | ------------------------ |
-| `Bill_of_Sale.doc`                     | `/files/Bill_of_Sale.doc` |
-| `MSF_ParkingLotExercises.pdf`          | `/files/MSF_ParkingLotExercises.pdf` |
-| `fault-finding-diagram.pdf`            | `/files/fault-finding-diagram.pdf` |
-| `gearing.xls`                          | `/files/gearing.xls` |
-| `suspension.pdf`                       | `/files/suspension.pdf` |
+To add a resource: drop the file in `static/files/` and add an entry to
+`data/resources.toml` with the exact filename. The table fills in on the next
+build; the layout hides rows whose file isn't present, so nothing ships broken.
 
 ## Custom domain / CNAME
 
