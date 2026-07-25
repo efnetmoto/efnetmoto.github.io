@@ -83,8 +83,8 @@ botmaster. So to save a default, you need a record. Here's how to get one:
    You'll be non-privileged by default (no flags), and **that's fine** — you
    don't need any flags to save weather preferences, just a record.
 3. **The bot should now recognize you** by your hostmask. If it doesn't (your
-   IP/host changed — dynamic ISP, VPN, travel), **ident** so it re-matches you
-   to your handle — see the
+   IP/host changed — dynamic ISP, VPN, travel), **ident** — that re-matches you
+   to your handle and saves your current host for next time — see the
    [eggdrop cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}).
 4. **Now `.wzset <location>` works**, and a bare `.w` / `.wz` uses your saved
    default.

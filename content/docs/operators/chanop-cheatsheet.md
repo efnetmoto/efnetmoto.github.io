@@ -19,12 +19,6 @@ on.
 .kick <chan> <nick> [reason]        (partyline — goes through the bot)
 ```
 
-In channel directly:
-
-```
-/kick <chan> <nick> [reason]        (IRC — your client op, immediate)
-```
-
 ## Ban
 
 Use the **bot's** `.+ban` for any ban you want the bot to remember (with expiry,
@@ -65,17 +59,8 @@ Via the bot (partyline):
 ```
 .op <nick> <chan>
 .deop <nick> <chan>
-```
-
-## Channel modes
-
-Set with `/mode`:
-
-```
-/mode <chan> +m            moderated (only +v/+o can speak)
-/mode <chan> +s            secret (hidden from /list)
-/mode <chan> +l 50         limit
-/mode <chan> +R            registered nicks only (if the network supports it)
+.voice <nick> <chan> 
+.devoice <nick> <chan>
 ```
 
 ## Finding a user's record
@@ -96,12 +81,10 @@ You can't add or fix a user record yourself (that's a
 you can find one:
 
 ```
-.whom *                    who's on the partyline + their flags
-.bots                      linked bots on the botnet
+.match +m                  lists all users with +m (master) flag
 ```
 
-`.whom *` lists everyone currently on the partyline with their flags — look for
-someone carrying `+n` (owner) or `+m` (master). That's a botmaster; ask them
+`.match +m` lists everyone with a master flag on their user record; ask them
 (via partyline or in channel) to add or fix a member's record.
 
 ## Quick reference
@@ -113,6 +96,7 @@ someone carrying `+n` (owner) or `+m` (master). That's a botmaster; ask them
 | Ban (one-off) | — | `/mode <chan> +b <hostmask>` |
 | Remove a bot ban | `.-ban <hostmask\|number>` | — |
 | List bans | `.bans [all]` | `/mode <chan> +b` (server bans only) |
+| Stick a ban (don't dynamically remove) | `.stick <number` | - |
 | Op / deop | `.op <nick> <chan>` / `.deop <nick> <chan>` | `/mode <chan> ±o <nick>` |
 | Find a record | `.whois <nick>` / `.match <handle>` | — |
-| Find a botmaster | `.whom *` / `.bots` | — |
+| Find a botmaster | `.match +m` | — |
