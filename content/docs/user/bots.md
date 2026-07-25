@@ -33,3 +33,6 @@ that runs them — live in a separate repo:
 This site only documents how to use them. If you want to work on the bot code
 or the deployment, head there — its `CONTRIBUTING.md` covers the build and
 workflow.
+
+If you're an op, you can be invited to the `efnetmoto` GitHub organization on
+request — reach out to a botmaster.
