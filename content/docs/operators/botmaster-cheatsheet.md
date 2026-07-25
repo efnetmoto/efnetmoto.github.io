@@ -20,6 +20,14 @@ you're not on yet, see [Joining the partyline]({{< relref "/docs/operators/party
 > needs a record, you create it.
 
 ## Adding a user
+If the user is present in the channel:
+```
+.adduser <nick>
+```
+
+`.adduser` Creates a new user record for a user on the channel, using their current hostname.
+
+If the user is not present in the channel:
 
 ```
 .+user <handle> <hostmask>
@@ -48,7 +56,7 @@ see the [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}})):
 If they're in channel, the quickest way to get their current hostmask:
 
 ```
-.whois <nick>
+/whois <nick>
 ```
 
 The output shows their `nick!user@host` — use that (wildcarded) as the hostmask
@@ -112,14 +120,13 @@ Examples:
 .-host <handle> <hostmask>     remove a hostmask
 ```
 
-> [!IMPORTANT]
-> **`.+host` is the path members can't self-serve.** The `addhost` MSG command
-> is disabled on this fleet (the fleet unbinds it), so a member whose hostmask
-> changed can **not** add the new one themselves. They ident to get recognized
-> for the session, then come to **you** to make it permanent with `.+host`. This
-> cheat sheet is where that handoff lands. Point them at the
-> [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}) to ident
-> first.
+> [!NOTE]
+> **Members self-serve hostmask changes.** `/msg <bot> ident <password>`
+> re-matches a member for the current session **and** permanently adds their
+> current host to their record — no botmaster needed. Point them at the
+> [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}). You
+> only reach for `.+host` to add a hostmask the member *isn't* connecting from
+> right now — a broader wildcarded mask, or a host for someone who's offline.
 
 ## Adding a non-privileged member
 
@@ -148,38 +155,23 @@ Only add flags deliberately, when someone actually needs them.
 
 Removes the record and all its hostmasks/flags. Use with care.
 
-## Save your work
-
-Changes to the user records are saved on a timer, but you can force it:
-
-```
-.save
-```
-
 ## Symptom: "the bot isn't recognizing me"
 
 > [!NOTE]
 > If a member says the bot isn't recognizing them — `.wzset` claims they have no
 > default, or the bot ignores them — it's almost always a **hostmask mismatch**.
 > First `.whois <nick>` and check their hostmasks against their *current* host
-> (shown in the `.whois` output). If the new host isn't on the record, you have
-> two ways to fix it — pick one, you don't need both:
-> - **`.+host <handle> <new-hostmask>`** (permanent) — the bot recognizes them
->   by the new hostmask from now on. This is the fix for a hostmask that's
->   changed for good.
-> - **Have the member ident** (this session only) — point them at the
->   [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}).
->   Identing re-matches them for the current session but doesn't save the
->   hostmask, so they'd need to ident again next time. Use this when the change
->   is temporary (VPN, travel) or while you're about to `.+host` it anyway.
+> (shown in the `.whois` output).
+>
+> **First-line fix: have the member ident.** `/msg <bot> ident <password>`
+> re-matches them for this session **and** permanently adds their current host
+> to their record, so they're set going forward — point them at the
+> [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}). No
+> botmaster action needed for the usual "my IP changed" case.
+>
+> **You only need `.+host <handle> <new-hostmask>`** when the member *can't*
+> ident from that host right now — they're offline, or you want to add a mask
+> that isn't their exact current host (a wildcarded domain, a future host).
 >
 > If `whois` finds **no record at all**, it's not a hostmask issue — create one
 > with `.+user` (see [Adding a user](#adding-a-user)).
-
-## Out of scope here
-
-This cheat sheet covers **user records only**. It does **not** cover:
-
-- Botnet linking / partyline plumbing — that's a separate concern.
-- Fleet management (Ansible/Compose, bot deployment) — a separate concern.
-- Ban maintenance — see [ban maintenance]({{< relref "/docs/operators/ban-maintenance.md" >}}).

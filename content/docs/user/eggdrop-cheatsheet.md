@@ -63,15 +63,18 @@ Partyline form (if you have access):
 .ident <password> <nickname>
 ```
 
-Identing re-matches your *current* host to your record for this session. To
-make a new hostmask **permanent**, ask a botmaster to add it to your record
-(`.+host`) — see the [botmaster cheat sheet]({{< relref "/docs/operators/botmaster-cheatsheet.md" >}}).
+Identing re-matches your *current* host to your record **and adds it
+permanently** — you won't need to ident again from that host. You only need a
+botmaster's `.+host` to add a host you're *not* connecting from right now (a
+wildcarded mask, or a host for when you're offline) — see the
+[botmaster cheat sheet]({{< relref "/docs/operators/botmaster-cheatsheet.md" >}}).
 
 > [!IMPORTANT]
 > **If the bot isn't recognizing you** — e.g. `.wzset` says you have no default
 > even though you set one, or the bot treats you like a stranger — it's almost
-> always a **hostmask mismatch**. Ident now (above) to get recognized for this
-> session; then ask a botmaster to add the new hostmask if it's permanent.
+> always a **hostmask mismatch**. Ident now (above): that adds your current
+> host to your record, so the bot recognizes you now **and** next time. No
+> botmaster needed unless you want to add a host you're not connecting from.
 
 ## You need a record first
 
