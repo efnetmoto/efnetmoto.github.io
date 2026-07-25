@@ -5,12 +5,12 @@ weight: 20
 
 # Weather (`.w` / `.wz` / `.wzset`)
 
-XeroKewl fetches current conditions and (for non-METAR lookups) a short forecast.
-These commands work **both in channel and as a private message** (`/msg XeroKewl <command>`).
+Xerokewl fetches current conditions and (for non-METAR lookups) a short forecast.
+These commands work **both in channel and as a private message** (`/msg Xerokewl <command>`).
 
 ```
 <you> .wz 94025
-<XeroKewl> San Mateo, CA — 62°F (17°C), partly cloudy. …
+<Xerokewl> San Mateo, CA — 62°F (17°C), partly cloudy. …
 ```
 
 ## Commands
@@ -59,9 +59,9 @@ without typing the location every time. Your default is stored against your
 
 ```
 <you> .wzset 94025
-<XeroKewl> Preference updated. Default is now 94025 --imperial
+<Xerokewl> Preference updated. Default is now 94025 --imperial
 <you> .w
-<XeroKewl> San Mateo, CA — …   (uses your saved default + units)
+<Xerokewl> San Mateo, CA — …   (uses your saved default + units)
 ```
 
 You can also save a METAR default: `.wzset --metar KSFO`.
@@ -98,7 +98,7 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 ## The bot is a pass-through, not the data source
 
 > [!IMPORTANT]
-> XeroKewl pulls data from upstream **providers** — WeatherAPI, AVWX (METAR),
+> Xerokewl pulls data from upstream **providers** — WeatherAPI, AVWX (METAR),
 > the Ambient Weather Network, and APRS/CWOP — and does **not** generate or
 > control any of it. A wrong temperature, a stale METAR, a station that's down,
 > or a "location not found" that you *know* exists — that's the upstream
@@ -120,4 +120,4 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 | `--metar requires an ICAO code (e.g. KSFO). …` | You passed `--metar` with no location. |
 | `<provider error> Location not saved — check the location and try .wzset again.` | The provider rejected the location while saving. |
 
-Run `.wzhelp` in channel or `/msg XeroKewl wzhelp` any time for the command list.
+Run `.wzhelp` in channel or `/msg Xerokewl wzhelp` any time for the command list.

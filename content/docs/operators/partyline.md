@@ -42,7 +42,7 @@ you> yourhandle
 you> yourpassword
 ```
 
-`<bot>` is whichever bot you have a record on (e.g. **XeroKewl**, **Decisis**).
+`<bot>` is whichever bot you have a record on (e.g. **Xerokewl**, **Decisis**).
 You set your password with `pass` — see the
 [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}) (or a
 botmaster set it when creating your record).
