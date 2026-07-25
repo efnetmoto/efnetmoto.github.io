@@ -18,17 +18,6 @@ The bots themselves (Eggdrop, deployed with Ansible + Docker) live in a separate
 repo: [`github.com/efnetmoto/efnetmoto-fleet`](https://github.com/efnetmoto/efnetmoto-fleet).
 This repo only documents how to use them.
 
-## Run locally
-
-```sh
-git clone https://github.com/efnetmoto/efnetmoto.github.io.git
-cd efnetmoto.github.io
-git submodule update --init --recursive   # themes/hugo-book
-hugo server --buildDrafts --disableFastRender
-```
-
-The site is at <http://localhost:1313/>.
-
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to make a change — local preview,
