@@ -13,6 +13,28 @@ you're not connected yet.)
 `<chan>` is `#motorcycles` unless you're acting on another channel the bot sits
 on.
 
+## Getting opped
+
+Ask the bot to op you:
+
+```
+/msg <bot> op <password>
+```
+
+On the partyline, `.op <yournick> #motorcycles` does the same thing.
+
+> [!IMPORTANT]
+> **If nothing happens** — the bot doesn't reply and you stay deopped — it's
+> almost always one of:
+>
+> - **The bot doesn't recognize you.** A changed hostmask (dynamic IP, VPN, a
+>   different nick) means the bot can't match you to your record. Ident first
+>   with `/msg <bot> ident <password>` (see the
+>   [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}})),
+>   then retry `op`.
+> - **No password set, or it's wrong.** Set one with `/msg <bot> pass <newpass>`
+>   (or `.pass <newpass>` on the partyline).
+
 ## Kick
 
 ```
