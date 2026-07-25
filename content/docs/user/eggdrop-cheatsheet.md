@@ -25,7 +25,7 @@ Where a command exists in both forms, both are shown below; **MSG is listed
 first** because that's what you almost certainly have.
 
 > [!NOTE]
-> `<bot>` is whichever bot you have a record on — **XeroKewl** for weather
+> `<bot>` is whichever bot you have a record on — **Xerokewl** for weather
 > defaults, for example. Substitute the bot's nick.
 
 ## Set a password

@@ -8,6 +8,8 @@ weight: 10
 These pages cover what the bots can do for you in the channel. You don't need
 any special access to use them — just type the trigger in channel.
 
+- [The bots]({{< relref "/docs/user/bots.md" >}}) — which bot does what, and
+  how to reach one (`/msg` or `/ctcp ... chat`).
 - [Search (`!g`)]({{< relref "/docs/user/search.md" >}}) — look something up on
   the web; results come back with short links.
 - [Weather (`.w` / `.wz` / `.wzset`)]({{< relref "/docs/user/weather.md" >}}) —

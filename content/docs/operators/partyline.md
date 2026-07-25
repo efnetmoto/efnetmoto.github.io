@@ -42,7 +42,8 @@ you> yourhandle
 you> yourpassword
 ```
 
-`<bot>` is whichever bot you have a record on (e.g. **XeroKewl**, **Decisis**).
+`<bot>` is any of them — **Pompone**, **Xerokewl**, or **Decisis**. They share
+user records, so your handle and password work on whichever you connect to.
 You set your password with `pass` — see the
 [user cheat sheet]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}) (or a
 botmaster set it when creating your record).

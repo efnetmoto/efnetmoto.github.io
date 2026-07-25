@@ -5,15 +5,15 @@ weight: 25
 
 # Quotes (`!quote`, `!addquote`, …)
 
-XeroKewl keeps a quote file for the channel — funny lines, memorable moments,
+Xerokewl keeps a quote file for the channel — funny lines, memorable moments,
 the usual IRC quote-file stuff. Type the commands in channel; `!quote` and
-`!getquote` also work via private message (`/msg XeroKewl !quote <title>`).
+`!getquote` also work via private message (`/msg Xerokewl !quote <title>`).
 
 ## Commands
 
 | Command | Who can use it | What it does |
 | --- | --- | --- |
-| `!quote <title>` | everyone | Fetch the quote with that title. Also via `/msg XeroKewl !quote <title>`. |
+| `!quote <title>` | everyone | Fetch the quote with that title. Also via `/msg Xerokewl !quote <title>`. |
 | `!getquote <title>` | everyone | Alias for `!quote`. |
 | `!randquote [text]` | everyone | A random quote. With optional text, limits to quotes whose title or text matches. |
 | `!randauthor [nick]` | everyone | A random quote added by `<nick>`. No nick = any random quote. |
@@ -34,7 +34,7 @@ the usual IRC quote-file stuff. Type the commands in channel; `!quote` and
 
 ```
 <you> !quote squid
-<XeroKewl> squid: the squid said hello to the clam
+<Xerokewl> squid: the squid said hello to the clam
 ```
 
 Titles are case-insensitive — `!quote Squid`, `!quote SQUID`, and `!quote squid`
@@ -51,7 +51,7 @@ everything after is the quote:
 
 ```
 <you> !addquote squid the squid said hello to the clam
-<XeroKewl> Quote squid added.
+<Xerokewl> Quote squid added.
 ```
 
 Titles must be unique — a duplicate gets `Quote squid already exists.`
