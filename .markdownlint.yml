@@ -1,0 +1,21 @@
+# Markdownlint configuration for the EFNet #motorcycles docs site.
+#
+# Disables rules that conflict with Hugo Book conventions or IRC/partyline
+# command examples; keeps structural rules (blank lines around headings, lists,
+# and code fences) that catch real rendering bugs.
+
+# MD013 - line length: disabled (flowing prose + wide command-reference tables).
+MD013: false
+
+# MD033 - inline HTML: disabled (Hugo shortcodes; <placeholder> tokens in code).
+MD033: false
+
+# MD041 - first line top-level heading: disabled (Hugo front matter precedes H1).
+MD041: false
+
+# MD025 - single H1: disabled (Hugo Book uses front-matter title + body H1).
+MD025: false
+
+# MD040 - fenced code language: disabled (eggdrop partyline / IRC commands
+# have no natural language; forcing a tag adds noise).
+MD040: false

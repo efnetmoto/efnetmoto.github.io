@@ -1,54 +1,40 @@
-# efnetmoto.github.io
+# efnetmoto.com
 
-Source for **efnetmoto.com** — the EFNet `#motorcycles` docs site. Built with
-[Hugo](https://gohugo.io) and the [Hugo Book](https://github.com/alex-shpak/hugo-book)
+Source for **efnetmoto.com** — the documentation site for the EFNet `#motorcycles`
+IRC channel. It's a docs site, not a blog: no posts, feeds, or marketing pages.
+Built with [Hugo](https://gohugo.io) and the [Hugo Book](https://github.com/alex-shpak/hugo-book)
 theme, deployed to GitHub Pages via GitHub Actions.
 
-This is a **docs site, not a blog**: no news/posts, pagination, or feeds. Two
-content areas — `/docs/` (user + operator bot docs, nested sidebar) and
-`/resources/` (a flat file-library table).
+The site covers three things:
 
-## Local development
+- **[User guide](https://efnetmoto.com/docs/user/)** — web search, weather, seen
+  tracking, quotes, and the eggdrop cheat sheet for channel members.
+- **[Operator guide](https://efnetmoto.com/docs/operators/)** — partyline,
+  kick/ban, user records, and ban maintenance for chanops and botmasters.
+- **[Resources](https://efnetmoto.com/resources/)** — a small library of
+  motorcycle reference files hosted directly on the site.
+
+The bots themselves (Eggdrop, deployed with Ansible + Docker) live in a separate
+repo: [`github.com/efnetmoto/efnetmoto-fleet`](https://github.com/efnetmoto/efnetmoto-fleet).
+This repo only documents how to use them.
+
+## Run locally
 
 ```sh
+git clone https://github.com/efnetmoto/efnetmoto.github.io.git
+cd efnetmoto.github.io
+git submodule update --init --recursive   # themes/hugo-book
 hugo server --buildDrafts --disableFastRender
-# site:  http://localhost:1313/
 ```
 
-The Hugo Book theme is vendored as a git submodule under `themes/hugo-book`.
-After cloning, initialise it:
+The site is at <http://localhost:1313/>.
 
-```sh
-git submodule update --init --recursive
-```
+## Contributing
 
-## Layout
+See [CONTRIBUTING.md](CONTRIBUTING.md) for how to make a change — local preview,
+the content-style rules, and the deploy flow. The detailed contributor and agent
+guide lives in [AGENTS.md](AGENTS.md).
 
-```
-content/
-  _index.md            homepage
-  docs/user/           user-facing bot docs (search, weather, quotes, bseen, eggdrop cheat sheet)
-  docs/operators/      operator docs (partyline, chanop + botmaster cheat sheets, bans)
-  resources/_index.md  flat file-library table (data-driven; see data/resources.toml)
-data/resources.toml    resource-file list (name, filename, description) — the source of truth for the table
-layouts/resources/     resources-section list layout — renders a row only when the file exists in static/files/ (no broken links)
-static/files/          recovered assets served at /files/<asset>
-```
+## Licensing
 
-To add a resource: drop the file in `static/files/` and add an entry to
-`data/resources.toml` with the exact filename. The table fills in on the next
-build; the layout hides rows whose file isn't present, so nothing ships broken.
-
-## Custom domain / CNAME
-
-The apex `efnetmoto.com` is the canonical domain; `www.efnetmoto.com`
-redirects to it. `static/CNAME` (containing `efnetmoto.com`) is committed —
-Hugo copies it to the site root, where GitHub Pages reads it to know which
-apex to serve.
-
-DNS points the apex to the GitHub Pages A/AAAA records and `www` CNAMEs to
-`efnetmoto.github.io`. The custom domain is set in Settings → Pages (this
-provisions the TLS certificate and enables the `www` → apex redirect).
-
-While the apex cert is provisioning, the `efnetmoto.github.io` URL keeps
-serving the site at the same content.
+[MIT](LICENSE).

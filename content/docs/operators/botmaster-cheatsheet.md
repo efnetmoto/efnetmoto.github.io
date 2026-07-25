@@ -20,7 +20,9 @@ you're not on yet, see [Joining the partyline]({{< relref "/docs/operators/party
 > needs a record, you create it.
 
 ## Adding a user
+
 If the user is present in the channel:
+
 ```
 .adduser <nick>
 ```
