@@ -18,7 +18,7 @@ Both roles need partyline access, so start with **[Joining the partyline]({{< re
 - [Partyline]({{< relref "/docs/operators/partyline.md" >}}) — how to connect and
   why some commands live only there.
 - [Chanop cheat sheet]({{< relref "/docs/operators/chanop-cheatsheet.md" >}}) —
-  kick, ban, modes, finding a user record, finding a botmaster.
+  getting opped, kick, ban, modes, finding a user record, finding a botmaster.
 - [Botmaster cheat sheet]({{< relref "/docs/operators/botmaster-cheatsheet.md" >}}) —
   managing the bot's user records: adding, finding, changing, and removing the
   people it knows about.
