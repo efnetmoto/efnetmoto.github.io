@@ -51,6 +51,14 @@ disableKinds = ["taxonomy", "term", "rss"]
   name = "Resources"
   pageRef = "/resources/"
   weight = 2
+[[menu.before]]
+  name = "Deals Gap"
+  pageRef = "/gap/"
+  weight = 3
+[[menu.before]]
+  name = "GapWest"
+  pageRef = "/gapwest/"
+  weight = 4
 
 # Sidebar nav, below the docs tree (external links open in a new tab).
 [[menu.after]]
