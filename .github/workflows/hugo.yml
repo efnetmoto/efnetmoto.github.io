@@ -62,6 +62,19 @@ jobs:
         with:
           path: ./public
 
+  markdown-lint:
+    name: Markdown Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run markdownlint
+        uses: articulate/actions-markdownlint@v1
+        with:
+          config: .markdownlint.yml
+          files: '**/*.md'
+
   deploy:
     if: github.event_name == 'push'   # don't deploy from PRs
     environment:

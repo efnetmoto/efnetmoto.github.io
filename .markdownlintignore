@@ -1,0 +1,9 @@
+# Hugo Book theme (submodule — not ours to lint)
+themes/
+
+# Hugo build output
+public/
+resources/_gen/
+
+# Agent guide (meta doc with a deliberate dense style — not site content)
+AGENTS.md
