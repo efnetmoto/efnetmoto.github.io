@@ -23,3 +23,13 @@ handles different features, so which one you talk to depends on what you need.
 
 For passwords, identing, and hostmasks — what to do when a bot doesn't
 recognize you — see the [eggdrop cheat sheet]({{< relref "eggdrop-cheatsheet.md" >}}).
+
+## Where the bots live
+
+The bots themselves — the Eggdrop configs, the TCL and Python scripts that
+power `!g`, weather, quotes, and seen, and the Ansible + Docker deployment
+that runs them — live in a separate repo:
+[`github.com/efnetmoto/efnetmoto-fleet`](https://github.com/efnetmoto/efnetmoto-fleet).
+This site only documents how to use them. If you want to work on the bot code
+or the deployment, head there — its `CONTRIBUTING.md` covers the build and
+workflow.
