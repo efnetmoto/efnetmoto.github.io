@@ -1,0 +1,30 @@
+{{- /*
+  gap-register — renders the Deals Gap registration block, driven entirely by
+  page frontmatter on content/gap/_index.md:
+
+    registration_open   bool    true → PayPal link; false → "closed" note
+    registration_price   number  flows into both the paypal.me deeplink amount
+                                and the button label
+    registration_payee   string  the paypal.me handle (default "gattington")
+    start_date           date    trip start (rendered via the site's
+    end_date             date    BookDateFormat)
+
+  The date sentence is always shown (dates are announced ahead of opening
+  registration). The PayPal link / closed note follows, gated by
+  registration_open. Flipping registration_price updates both the deeplink
+  (paypal.me/<payee>/<price>) and the visible "$<price> per week…" label.
+*/ -}}
+{{- $open := .Page.Params.registration_open -}}
+{{- $price := .Page.Params.registration_price -}}
+{{- $payee := .Page.Params.registration_payee | default "gattington" -}}
+{{- $start := time .Page.Params.start_date -}}
+{{- $end := time .Page.Params.end_date -}}
+{{- $fmt := .Site.Params.BookDateFormat | default "January 2, 2006" -}}
+{{- if $open -}}
+<p>Join us Saturday, {{ $start.Format $fmt }}, 4:00pm &ndash; {{ $end.Format $fmt }}, 11:00am in the serene mountain ranges of North Carolina and Tennessee for some spirited motorcycle touring and social gathering.</p>
+<a class="book-btn" href="https://www.paypal.me/{{ $payee }}/{{ $price }}" target="_blank" rel="noopener">
+  ${{ $price }} per week per person by invite only
+</a>
+{{- else -}}
+<p><em>Registration is currently closed. Check back soon for next year's dates!</em></p>
+{{- end -}}
