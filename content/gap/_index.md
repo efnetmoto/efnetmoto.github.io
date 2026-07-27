@@ -1,6 +1,6 @@
 ---
 title: "Deals Gap"
-registration_open: false
+registration_open: true
 registration_price: 400
 registration_payee: "gattington"
 start_date: 2027-05-01
