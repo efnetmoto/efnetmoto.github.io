@@ -1,0 +1,69 @@
+// ─────────────────────────────────────────────────────────────────────────
+// Project custom styles (overrides themes/hugo-book/assets/_custom.scss,
+// which book.scss @imports). Scoped to .book-type-gap so only the Deals Gap
+// page (/gap/) is affected — docs, resources, and home keep the plain theme
+// look.
+//
+// Two concerns:
+//   1. Cap images and YouTube embeds to 80% width and center them, so
+//      full-width media isn't dominant.
+//   2. Style the italic video-caption lines (the <p><em>…</em></p> that
+//      immediately follows a YouTube embed) as proper captions: theme's
+//      smaller font, muted, centered under the centered video.
+//
+// The YouTube shortcode sizes its wrapper with padding-bottom:56.25%
+// (relative to the PARENT's width); capping the wrapper's own width would
+// leave the height pegged to the full content width. aspect-ratio (relative
+// to the wrapper's own width) drives the box instead, with !important to
+// defeat the inline height:0 / padding-bottom.
+//
+// The :has() selectors use a DIRECT-child iframe (:has(> iframe)) so they
+// match only the shortcode's immediate wrapper div — never an ancestor like
+// .book-columns that merely contains an in-box video as a descendant.
+// ─────────────────────────────────────────────────────────────────────────
+
+.book-type-gap {
+  // Images — 80% width, centered. Covers both the in-box photos (inside
+  // .book-columns) and any direct-child figure.
+  .book-article figure {
+    max-width: 80%;
+    margin-inline: auto;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  // YouTube embeds — 80% width, centered, 16:9 preserved.
+  .book-article div:has(> iframe[src*="youtube.com"]) {
+    max-width: 80%;
+    margin-inline: auto;
+    aspect-ratio: 16 / 9;
+    height: auto !important;
+    padding-bottom: 0 !important;
+  }
+
+  // Video captions — the italic <em>-only <p> that immediately follows a
+  // YouTube embed. Theme's smaller font, muted, centered to sit under the
+  // centered video. color-mix pulls --gray-500 toward the body text color
+  // for a darker muted gray than the theme's --gray-500 alone (which reads
+  // a touch light); it stays theme-aware (darker in light, readable in dark).
+  .book-article div:has(> iframe[src*="youtube.com"]) + p > em:only-child {
+    display: block;
+    text-align: center;
+    font-size: var(--font-size-smaller, 0.875rem);
+    color: color-mix(in srgb, var(--gray-500), var(--body-font-color) 75%);
+  }
+
+  // Side-by-side video pair — the row of two videos under the "Unreal
+  // Collection of Roads" paragraph (marked up with class="video-pair" on the
+  // columns shortcode). Let each fill its half-column (100%) instead of the
+  // 80% default, so the two sit edge to edge across the row rather than
+  // shrinking to 80% of an already-half column. Higher specificity (the extra
+  // .video-pair class) overrides the 80% rule above; aspect-ratio and the
+  // !important overrides are inherited from it.
+  .book-article .book-columns.video-pair div:has(> iframe[src*="youtube.com"]) {
+    max-width: 100%;
+  }
+}

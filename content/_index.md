@@ -13,5 +13,5 @@ wrenching, gear, and bike reviews. At least as much of it is off-topic life
 stuff as bikes. It's the coffee stop on a ride, over text.
 
 We're mostly US but genuinely global, and over the years enough of us have
-become actual friends that a couple of rides happen: an annual get-together at [Deals Gap]({{< relref "/gap.md" >}}) since the turn of the century, and [GapWest]({{< relref "/gapwest.md" >}}), a biennial NorCal
+become actual friends that a couple of rides happen: an annual get-together at [Deals Gap]({{< relref "/gap/_index.md" >}}) since the turn of the century, and [GapWest]({{< relref "/gapwest.md" >}}), a biennial NorCal
 meetup we started a few years back.
