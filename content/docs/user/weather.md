@@ -34,13 +34,40 @@ These commands work **both in channel and as a private message** (`/msg Xerokewl
 | City, State | `San Mateo, CA` | Spell it out; use the state. |
 | IATA airport code | `SFO` | General weather near the airport. |
 | ICAO code (with `--metar`) | `KSFO` | **Only** valid with `--metar`. |
-| Ambient Weather Network URL | `ambientweather.net/dashboard/…` | A personal weather station dashboard URL. |
+| Ambient Weather Network URL | `ambientweather.net/dashboard/…` | A personal weather station dashboard URL — see [Finding an Ambient Weather station](#finding-an-ambient-weather-station). |
 | 32-char station slug | `<32-char slug>` | Ambient station slug. |
 | CWOP callsign (SSID 13) | `<CALLSIGN-13>` | APRS/CWOP station callsign with SSID 13. |
 
 > [!NOTE]
 > ICAO codes (like `KSFO`) **only** work with `--metar`. For ordinary weather
 > use the IATA code instead (e.g. `SFO`, not `KSFO`).
+
+## Finding an Ambient Weather station
+
+The [Ambient Weather Network](https://ambientweather.net/) is a live map of
+privately-owned weather stations. Any station there can be a location for
+`.w`/`.wz` — handy when the nearest official station is miles off and you want
+readings from a station down the road.
+
+To grab a station's URL:
+
+1. Open [ambientweather.net](https://ambientweather.net/).
+2. Search for your area in the location box, or click **Find My Location**.
+3. Each dot on the map with a temperature next to it is a station. Click the one
+   you want — it loads in the station list on the right.
+4. In that list, click **View Dashboard**.
+5. Copy the dashboard URL from your browser's address bar. It looks like
+   `https://ambientweather.net/dashboard/` followed by a 32-character slug.
+
+Then use it as the location — the full URL, or just the 32-character slug on
+its own, both work:
+
+```
+<you> .wz https://ambientweather.net/dashboard/0123456789abcdef0123456789abcdef
+<Xerokewl> PWS: Backyard Station, San Mateo, CA :: 17.0C/62.0F (Feels like 16.0C/61.0F) …
+```
+
+Save it as your default with `.wzset <URL or slug>`.
 
 ## Flags
 
