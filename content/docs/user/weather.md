@@ -26,6 +26,15 @@ These commands work **both in channel and as a private message** (`/msg Xerokewl
 
 `.w` and `.wz` are aliases — same command. You can type either.
 
+## Flags
+
+- `--metar` — raw aviation weather (METAR). **Requires an ICAO code**
+  (e.g. `.wz --metar KSFO`). Anything else is rejected: `--metar is only valid
+  with ICAO codes (e.g. KSFO). Location not saved.`
+- `--metric` — show metric first, imperial second. **(This is the default.)**
+- `--imperial` — show imperial first, metric second.
+- Use `--metric`/`--imperial` with `.wzset` to change your saved default units.
+
 ## Location formats
 
 | Format | Example | Notes |
@@ -68,15 +77,6 @@ its own, both work:
 ```
 
 Save it as your default with `.wzset <URL or slug>`.
-
-## Flags
-
-- `--metar` — raw aviation weather (METAR). **Requires an ICAO code**
-  (e.g. `.wz --metar KSFO`). Anything else is rejected: `--metar is only valid
-  with ICAO codes (e.g. KSFO). Location not saved.`
-- `--metric` — show metric first, imperial second. **(This is the default.)**
-- `--imperial` — show imperial first, metric second.
-- Use `--metric`/`--imperial` with `.wzset` to change your saved default units.
 
 ## Saving a default (`.wzset`)
 
