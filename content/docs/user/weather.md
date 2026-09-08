@@ -20,7 +20,7 @@ These commands work **both in channel and as a private message** (`/msg Xerokewl
 | `.w <location>` / `.wz <location>` | Get weather for a one-off location. |
 | `.w` / `.wz` | Use your **saved default** location (see [Getting registered](#getting-registered)). |
 | `.wz --user <nick>` | Use **someone else's** saved default. |
-| `.wzset [--metar] [--metric\|--imperial] <location>` | **Save** your default location (and units). |
+| `.wzset [--metar \| --<provider>] [--metric\|--imperial] <location>` | **Save** your default location (and units). |
 | `.wzset --metric\|--imperial` | Update only your saved units (no location change). |
 | `.wzhelp` | PMs you this command list. |
 
@@ -29,11 +29,40 @@ These commands work **both in channel and as a private message** (`/msg Xerokewl
 ## Flags
 
 - `--metar` — raw aviation weather (METAR). **Requires an ICAO code**
-  (e.g. `.wz --metar KSFO`). Anything else is rejected: `--metar is only valid
-  with ICAO codes (e.g. KSFO). Location not saved.`
+  (e.g. `.wz --metar KSFO`). Anything else is rejected.
+- `--<provider>` — force a specific [provider](#providers) (e.g. `--awn`,
+  `--avwx`). Bypasses auto-discovery so you can mix and match — e.g.
+  `.wz --avwx KSFO` gets METAR without `--metar`, or `.wz --weatherapi KSFO`
+  gets a general forecast for an ICAO code. Mutually exclusive with `--metar`.
 - `--metric` — show metric first, imperial second. **(This is the default.)**
 - `--imperial` — show imperial first, metric second.
 - Use `--metric`/`--imperial` with `.wzset` to change your saved default units.
+
+## Providers
+
+The bot pulls data from four upstream providers. When you don't specify one,
+it auto-selects based on your location format (see [Location formats](#location-formats)).
+Use `--<provider>` to force a specific one.
+
+| Flag | Provider | What it returns | Auto-selected for |
+| --- | --- | --- | --- |
+| `--weatherapi` | [WeatherAPI](https://www.weatherapi.com/) | Current conditions + forecast | ZIP, city, IATA — the default fallback |
+| `--avwx` | [aviationweather.gov](https://aviationweather.gov/) | Raw METAR | ICAO codes (also via `--metar`) |
+| `--aprs` | [api.aprs.fi](https://api.aprs.fi/) | PWS station data | CWOP callsigns (SSID 13) |
+| `--awn` | [Ambient Weather Network](https://ambientweather.net/) | PWS station data | Ambient URL or 32-char slug |
+
+```
+<you> .wz --avwx KSFO
+<Xerokewl> KSFO 221853Z 27014G18KT 10SM FEW045 18/08 A3002 …
+```
+
+```
+<you> .wz --awn 0123456789abcdef0123456789abcdef
+<Xerokewl> PWS: Backyard Station, San Mateo, CA :: 17.0C/62.0F …
+```
+
+Save a provider with `.wzset --<provider> <location>` so a bare `.w` uses it
+every time.
 
 ## Location formats
 
@@ -42,14 +71,15 @@ These commands work **both in channel and as a private message** (`/msg Xerokewl
 | ZIP | `94025` | US zip code. |
 | City, State | `San Mateo, CA` | Spell it out; use the state. |
 | IATA airport code | `SFO` | General weather near the airport. |
-| ICAO code (with `--metar`) | `KSFO` | **Only** valid with `--metar`. |
+| ICAO code | `KSFO` | Works with `--metar` or `--avwx`. |
 | Ambient Weather Network URL | `ambientweather.net/dashboard/…` | A personal weather station dashboard URL — see [Finding an Ambient Weather station](#finding-an-ambient-weather-station). |
-| 32-char station slug | `<32-char slug>` | Ambient station slug. |
-| CWOP callsign (SSID 13) | `<CALLSIGN-13>` | APRS/CWOP station callsign with SSID 13. |
+| 32-char station slug | `0123456789abcdef0123456789abcdef` | Ambient station slug. |
+| CWOP callsign (SSID 13) | `CALLSIGN-13` | APRS/CWOP station callsign with SSID 13. |
 
 > [!NOTE]
-> ICAO codes (like `KSFO`) **only** work with `--metar`. For ordinary weather
-> use the IATA code instead (e.g. `SFO`, not `KSFO`).
+> ICAO codes (like `KSFO`) are routed to the METAR provider. For ordinary
+> weather use the IATA code instead (e.g. `SFO`, not `KSFO`), or force
+> WeatherAPI with `.wz --weatherapi KSFO`.
 
 ## Finding an Ambient Weather station
 
@@ -91,7 +121,8 @@ without typing the location every time. Your default is stored against your
 <Xerokewl> San Mateo, CA — …   (uses your saved default + units)
 ```
 
-You can also save a METAR default: `.wzset --metar KSFO`.
+You can also save a METAR default: `.wzset --metar KSFO`, or a provider
+default: `.wzset --awn <slug>`.
 
 ## Getting registered
 
@@ -125,13 +156,13 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 ## The bot is a pass-through, not the data source
 
 > [!IMPORTANT]
-> Xerokewl pulls data from upstream **providers** — WeatherAPI, AVWX (METAR),
-> the Ambient Weather Network, and APRS/CWOP — and does **not** generate or
-> control any of it. A wrong temperature, a stale METAR, a station that's down,
-> or a "location not found" that you *know* exists — that's the upstream
-> provider, not the bot. There's nothing to "fix" on the bot side; try a
-> different location format (ZIP vs city vs IATA) or wait for the provider to
-> update. (Same idea as the [search bot]({{< relref "/docs/user/search.md" >}})
+> Xerokewl pulls data from upstream [providers](#providers) — WeatherAPI,
+> aviationweather.gov, the Ambient Weather Network, and APRS/CWOP — and does
+> **not** generate or control any of it. A wrong temperature, a stale METAR, a
+> station that's down, or a "location not found" that you *know* exists — that's
+> the upstream provider, not the bot. There's nothing to "fix" on the bot side;
+> try a different location format (ZIP vs city vs IATA) or wait for the provider
+> to update. (Same idea as the [search bot]({{< relref "/docs/user/search.md" >}})
 > — blame the source, not the messenger.)
 
 ## Error messages
@@ -145,6 +176,10 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 | `Unknown location. Try .wzhelp for usage.` / `Unknown location format. Try .wzhelp for usage.` | The bot couldn't parse your location. Try another format. |
 | `--metar is only valid with ICAO codes (e.g. KSFO). Location not saved.` | You passed `--metar` with a non-ICAO location. |
 | `--metar requires an ICAO code (e.g. KSFO). …` | You passed `--metar` with no location. |
+| `Unknown flag '<flag>'. Available providers: --aprs, --avn, --avwx, --weatherapi.` | You passed an unrecognized `--flag`. |
+| `Use --metar or --<provider>, not both. Try .wzhelp for usage.` | You passed both `--metar` and a `--<provider>` flag. |
+| `--<provider> requires a location. …` | You passed a provider flag without a location. |
+| `<provider name> can't handle that location.` | You forced a provider on a location it doesn't support (e.g. `--awn 94025`). |
 | `<provider error> Location not saved — check the location and try .wzset again.` | The provider rejected the location while saving. |
 
 Run `.wzhelp` in channel or `/msg Xerokewl wzhelp` any time for the command list.
