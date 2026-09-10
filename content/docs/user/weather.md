@@ -40,7 +40,7 @@ These commands work **both in channel and as a private message** (`/msg Xerokewl
 
 ## Providers
 
-The bot pulls data from four upstream providers. When you don't specify one,
+The bot pulls data from five upstream providers. When you don't specify one,
 it auto-selects based on your location format (see [Location formats](#location-formats)).
 Use `--<provider>` to force a specific one.
 
@@ -50,6 +50,7 @@ Use `--<provider>` to force a specific one.
 | `--avwx` | [aviationweather.gov](https://aviationweather.gov/) | Raw METAR | ICAO codes (also via `--metar`) |
 | `--aprs` | [api.aprs.fi](https://api.aprs.fi/) | PWS station data | CWOP callsigns (SSID 13) |
 | `--awn` | [Ambient Weather Network](https://ambientweather.net/) | PWS station data | Ambient URL or 32-char slug |
+| `--nws` | [api.weather.gov](https://api.weather.gov/) | Current conditions + forecast | Never — manual override only |
 
 ```
 <you> .wz --avwx KSFO
@@ -59,6 +60,15 @@ Use `--<provider>` to force a specific one.
 ```
 <you> .wz --awn 0123456789abcdef0123456789abcdef
 <Xerokewl> PWS: Backyard Station, San Mateo, CA :: 17.0C/62.0F …
+```
+
+`--nws` is for National Weather Service observation stations — official
+government weather stations identified by a station ID (e.g. `KSFO`,
+`BNDC1`). It's never auto-selected; you must use `--nws` explicitly.
+
+```
+<you> .wz --nws BNDC1
+<Xerokewl> BEN LOMOND (BNDC1) :: Clear :: 27.8C/82.0F (Humidity: 28%) …
 ```
 
 Save a provider with `.wzset --<provider> <location>` so a bare `.w` uses it
@@ -72,6 +82,7 @@ every time.
 | City, State | `San Mateo, CA` | Spell it out; use the state. |
 | IATA airport code | `SFO` | General weather near the airport. |
 | ICAO code | `KSFO` | Works with `--metar` or `--avwx`. |
+| NWS station ID | `BNDC1` | National Weather Service station. Requires `--nws` (never auto-selected). |
 | Ambient Weather Network URL | `ambientweather.net/dashboard/…` | A personal weather station dashboard URL — see [Finding an Ambient Weather station](#finding-an-ambient-weather-station). |
 | 32-char station slug | `0123456789abcdef0123456789abcdef` | Ambient station slug. |
 | CWOP callsign (SSID 13) | `CALLSIGN-13` | APRS/CWOP station callsign with SSID 13. |
@@ -157,13 +168,14 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 
 > [!IMPORTANT]
 > Xerokewl pulls data from upstream [providers](#providers) — WeatherAPI,
-> aviationweather.gov, the Ambient Weather Network, and APRS/CWOP — and does
-> **not** generate or control any of it. A wrong temperature, a stale METAR, a
-> station that's down, or a "location not found" that you *know* exists — that's
-> the upstream provider, not the bot. There's nothing to "fix" on the bot side;
-> try a different location format (ZIP vs city vs IATA) or wait for the provider
-> to update. (Same idea as the [search bot]({{< relref "/docs/user/search.md" >}})
-> — blame the source, not the messenger.)
+> aviationweather.gov, the Ambient Weather Network, APRS/CWOP, and
+> api.weather.gov (NWS) — and does **not** generate or control any of it. A
+> wrong temperature, a stale METAR, a station that's down, or a "location not
+> found" that you *know* exists — that's the upstream provider, not the bot.
+> There's nothing to "fix" on the bot side; try a different location format
+> (ZIP vs city vs IATA) or wait for the provider to update. (Same idea as the
+> [search bot]({{< relref "/docs/user/search.md" >}}) — blame the source, not
+> the messenger.)
 
 ## Error messages
 
@@ -176,7 +188,7 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 | `Unknown location. Try .wzhelp for usage.` / `Unknown location format. Try .wzhelp for usage.` | The bot couldn't parse your location. Try another format. |
 | `--metar is only valid with ICAO codes (e.g. KSFO). Location not saved.` | You passed `--metar` with a non-ICAO location. |
 | `--metar requires an ICAO code (e.g. KSFO). …` | You passed `--metar` with no location. |
-| `Unknown flag '<flag>'. Available providers: --aprs, --avn, --avwx, --weatherapi.` | You passed an unrecognized `--flag`. |
+| `Unknown flag '<flag>'. Available providers: --aprs, --avn, --avwx, --nws, --weatherapi.` | You passed an unrecognized `--flag`. |
 | `Use --metar or --<provider>, not both. Try .wzhelp for usage.` | You passed both `--metar` and a `--<provider>` flag. |
 | `--<provider> requires a location. …` | You passed a provider flag without a location. |
 | `<provider name> can't handle that location.` | You forced a provider on a location it doesn't support (e.g. `--awn 94025`). |
