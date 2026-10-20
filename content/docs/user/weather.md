@@ -138,8 +138,10 @@ default: `.wzset --awn <slug>`.
 ## Getting registered
 
 The single most common confusion: you run `.wzset`, or a bare `.w`, and the bot
-tells you you're **"not registered"**. Here's what that means and the exact path
-to fix it.
+tells you it doesn't recognize you. That has two causes — you have no bot record
+at all, or you do but your current hostmask isn't on it (your IP/host changed).
+This section covers the first; for the second see
+[Not recognized by the bot](#not-recognized-by-the-bot).
 
 The bot doesn't auto-add users — every user record is created by hand by a
 botmaster. So to save a default, you need a record. Here's how to get one:
@@ -164,6 +166,26 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 > Getting registered is only required for *saving* a default and using the bare
 > `.w` / `.wz` form.
 
+## Not recognized by the bot
+
+When you run a bare `.w` / `.wz` or `.wzset` and the bot doesn't recognize you,
+there are exactly two reasons. Both produce the same message, so this section
+tells them apart and links to each remedy.
+
+1. **You have no bot record.** You've never been added — see
+   [Getting registered](#getting-registered) to get one (ask a chanop, and a
+   botmaster creates it).
+2. **You have a record, but your current hostmask isn't on it.** Your IP or
+   hostname changed — dynamic ISP, VPN, travel, a different nick — so the bot
+   can't match you to your record. **Ident** to re-match your current host and
+   save it for next time: see
+   [Ident when your hostmask changed]({{< relref "/docs/user/eggdrop-cheatsheet.md" >}}#ident-when-your-hostmask-changed)
+   on the eggdrop cheat sheet.
+
+> [!TIP]
+> In the meantime, `.wz <location>` (with a location) works for **anyone**, no
+> record or ident needed.
+
 ## The bot is a pass-through, not the data source
 
 > [!IMPORTANT]
@@ -181,8 +203,8 @@ botmaster. So to save a default, you need a record. Here's how to get one:
 
 | You see | Why |
 | --- | --- |
-| `You must be registered with the bot to use a saved default. Try .wz <location>.` | You ran a bare `.w`/`.wz` but have no user record. See [Getting registered](#getting-registered); for now use `.wz <location>`. |
-| `You must be a registered bot user to save preferences. Try .wzhelp for usage.` | You ran `.wzset` with no record. See [Getting registered](#getting-registered). |
+| `You must be registered and recognized by the bot to use a saved default. Ask an op to add you, or ident if your host changed: <link>` | You ran a bare `.w`/`.wz` but the bot doesn't recognize you — either no record, or your hostmask changed. See [Not recognized by the bot](#not-recognized-by-the-bot); for now use `.wz <location>`. |
+| `You must be registered and recognized by the bot to save a default. Ask an op to add you, or ident if your host changed: <link>` | You ran `.wzset` but the bot doesn't recognize you — either no record, or your hostmask changed. See [Not recognized by the bot](#not-recognized-by-the-bot). |
 | `<nick> is not registered with the bot.` | You used `.wz --user <nick>` and that nick has no record. |
 | `No default set. Use .wzset <location>.` / `No default location set. Use .wzset <location> to save one.` | You have a record but no saved location. Run `.wzset <location>`. |
 | `Unknown location. Try .wzhelp for usage.` / `Unknown location format. Try .wzhelp for usage.` | The bot couldn't parse your location. Try another format. |
